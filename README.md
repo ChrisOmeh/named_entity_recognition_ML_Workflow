@@ -26,7 +26,7 @@ Stage: D
 Stage Lesson: Setting up Kubernetes using Microk8s.
 Task Target: Deploy Kubeflow 
 ```
-```
+
 # Task Name: Named Entity Recognition with Kubeflow and Keras 
 
 In this walkthrough, you will learn how to use Kubeflow to build reusable components to train your model on an kubernetes cluster and deploy it to AI platform.
@@ -59,8 +59,6 @@ Named Entity Recognition is a word classification problem, which extract data ca
 # Task Documentation link: "https://github.com/kubeflow/examples/tree/master/named_entity_recognition"
 
 
-  ```bash
-
 # Task Problem Statement
 Machine Learning process is such an iterative process. By this we mean that Machine Learning work cycle is recycling in nature. As a result, most often Machine Learning Engineers need to automate this work flow process to make it easy and reuseable.
 
@@ -90,14 +88,14 @@ Creating a bucket that will contain everything required for our Kubeflow pipelin
 ```bash
 gsutil mb -c regional -l us-central1 gs://${BUCKET}
 ```
-```
+
 ## Cloning the examples repository
 The Cloned repository contains everything needed for this example. The clone repo is from kubeflow examples
 
 ```bash
 git clone https://github.com/kubeflow/examples.git
 ```
-```
+
 Next is to open a Terminal and navigate to the folder `/examples/named_entity_recognition/` which is in the cloned repository.
 
 # Step 2: Build the pipeline components
@@ -208,6 +206,7 @@ You don't have the needed permissions to perform this operation, and you may hav
 ```
 
 # STEP 4
+
 # Dataset
 
 ## Dataset description
