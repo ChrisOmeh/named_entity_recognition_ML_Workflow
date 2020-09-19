@@ -1,22 +1,3 @@
-# Named Entity Recognition with Kubeflow and Keras 
-
-In this walkthrough, you will learn how to use Kubeflow to build reusable components to train your model on an kubernetes cluster and deploy it to AI platform.
-
-## Goals
-
-* Demonstrate how to build reusable pipeline components
-* Demonstrate how to use Keras only models
-* Demonstrate how to train a Named Entity Recognition model on a Kubernetes cluster
-* Demonstrate how to deploy a Keras model to AI Platform
-* Demonstrate how to use a custom prediction routine
-* Demonstrate how to use Kubeflow metrics
-* Demonstrate how to use Kubeflow visualizations 
-
-## What is Named Entity Recognition
-Named Entity Recognition is a word classification problem, which extract data called entities from text.
-
-![solution](documentation/files/solution.png)
-
 # Intern Detalis
 
 ``` bash
@@ -56,8 +37,9 @@ Named Entity Recognition is a word classification problem, which extract data ca
 1. [Monitor the training](documentation/step-6-monitor-training.md)
 1. [Predict](documentation/step-7-predictions.md)
 
+``` bash
 # Task Documentation link: "https://github.com/kubeflow/examples/tree/master/named_entity_recognition"
-
+```
 
 # Task Problem Statement
 Machine Learning process is such an iterative process. By this we mean that Machine Learning work cycle is recycling in nature. As a result, most often Machine Learning Engineers need to automate this work flow process to make it easy and reuseable.
