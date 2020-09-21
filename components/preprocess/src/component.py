@@ -13,11 +13,11 @@ PREPROCESS_FILE = 'processor_state.pkl'
 
 
 def read_data(input1_path):
-  with gfile.Open(input1_path, 'r') as input1_file:
-    print('processing')
-    print('input file', input1_file)
-    csv_data = pd.read_csv(input1_file, error_bad_lines=False)
-    return csv_data
+    with gfile.Open(input1_path, 'r') as input1_file:
+        print('processing')
+        print('input file', input1_file)
+        csv_data = pd.read_csv(input1_file, error_bad_lines=False)
+        return csv_data
 
 
 # Defining and parsing the command-line arguments
@@ -56,8 +56,8 @@ print(data.head())
 
 
 def agg_func(s):
-  return [(w, t) for w, t in zip(s["word"].values.tolist(),
-                                 s["tag"].values.tolist())]
+    return [(w, t) for w, t in zip(s["word"].values.tolist(),
+            s["tag"].values.tolist())]
 
 
 grouped = data.groupby("sentence_idx").apply(agg_func)
@@ -98,16 +98,16 @@ y = [to_categorical(i, num_classes=n_tags) for i in y]
 
 # export features and labels for training
 with gfile.GFile(args.output_x_path, 'w') as output_X:
-  pickle.dump(X, output_X)
+    pickle.dump(X, output_X)
 
 with gfile.GFile(args.output_y_path, 'w') as output_y:
-  pickle.dump(y, output_y)
+    pickle.dump(y, output_y)
 
 # export preprocessing state, required for custom prediction route used
 # during inference
 preprocess_output = args.output_preprocessing_state_path + '/' + PREPROCESS_FILE
 with gfile.GFile(preprocess_output, 'w') as output_preprocessing_state:
-  pickle.dump(processor, output_preprocessing_state)
+    pickle.dump(processor, output_preprocessing_state)
 
 # with open('./processor_state.pkl', 'wb') as f:
 #  pickle.dump(processor, f)

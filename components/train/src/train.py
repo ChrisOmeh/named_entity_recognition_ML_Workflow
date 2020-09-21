@@ -7,7 +7,8 @@ import numpy as np
 from tensorflow import gfile
 from tensorflow.python.lib.io import file_io
 from keras.models import Model, Input
-from keras.layers import LSTM, Embedding, Dense, TimeDistributed, Dropout, Bidirectional
+from keras.layers import LSTM, Embedding, Dense, TimeDistributed, Dropout
+from keras.layers import Bidirectional
 from keras.callbacks import TensorBoard
 from sklearn.model_selection import train_test_split
 
@@ -15,13 +16,13 @@ MODEL_FILE = 'keras_saved_model.h5'
 
 
 def load_feature(input_x_path):
-  with gfile.Open(input_x_path, 'rb') as input_x_file:
-    return pickle.loads(input_x_file.read())
+    with gfile.Open(input_x_path, 'rb') as input_x_file:
+        return pickle.loads(input_x_file.read())
 
 
 def load_label(input_y_path):
-  with gfile.Open(input_y_path, 'rb') as input_y_file:
-    return pickle.loads(input_y_file.read())
+    with gfile.Open(input_y_path, 'rb') as input_y_file:
+        return pickle.loads(input_y_file.read())
 
 
 # Defining and parsing the command-line arguments
@@ -30,8 +31,8 @@ parser.add_argument('--input-x-path', type=str, help='')
 parser.add_argument('--input-y-path', type=str, help='')
 parser.add_argument('--input-job-dir', type=str, help='')
 
-parser.add_argument('--input-tags', type=str, help='')
-parser.add_argument('--input-words', type=str, help='')
+parser.add_argument('--input-tags', type=int, help='')
+parser.add_argument('--input-words', type=int, help='')
 parser.add_argument('--input-dropout', type=float, help='')
 
 parser.add_argument('--output-model-path', type=str, help='')
@@ -89,8 +90,8 @@ loss, accuracy = model.evaluate(X_test, np.array(y_test))
 print('saved model to ', args.output_model_path)
 model.save(MODEL_FILE)
 with file_io.FileIO(MODEL_FILE, mode='rb') as input_f:
-  with file_io.FileIO(args.output_model_path + '/' + MODEL_FILE, mode='wb+') as output_f:
-    output_f.write(input_f.read())
+    with file_io.FileIO(args.output_model_path + '/' + MODEL_FILE, mode='wb+') as output_f:
+        output_f.write(input_f.read())
 
 # write out metrics
 metrics = {
@@ -102,7 +103,7 @@ metrics = {
 }
 
 with file_io.FileIO('/mlpipeline-metrics.json', 'w') as f:
-  json.dump(metrics, f)
+    json.dump(metrics, f)
 
 # write out TensorBoard viewer
 metadata = {
@@ -113,7 +114,7 @@ metadata = {
 }
 
 with open('/mlpipeline-ui-metadata.json', 'w') as f:
-  json.dump(metadata, f)
+    json.dump(metadata, f)
 
 
 Path(args.output_model_path_file).parent.mkdir(parents=True, exist_ok=True)

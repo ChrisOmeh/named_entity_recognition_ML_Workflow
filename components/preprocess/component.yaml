@@ -11,9 +11,9 @@ outputs:
   - name: Output y URI
     type: GCSPath
   - name: Output tags
-    type: String
+    type: Integer
   - name: Output words
-    type: String
+    type: Integer
   - name: Output preprocessing state URI
     type: String
 implementation:

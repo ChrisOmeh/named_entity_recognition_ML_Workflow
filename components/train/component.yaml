@@ -4,9 +4,9 @@ inputs:
 - {name: Input x URI, type: GCSPath}
 - {name: Input y URI, type: GCSPath}
 - {name: Input job dir URI, type: GCSPath}
-- {name: Input tags, type: String}
-- {name: Input words, type: String}
-- {name: Input dropout }
+- {name: Input tags, type: Integer}
+- {name: Input words, type: Integer}
+- {name: Input dropout, type: Float}
 - {name: Output model URI template, type: GCSPath}
 outputs:
   - name: Output model URI

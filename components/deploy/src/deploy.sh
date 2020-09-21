@@ -69,17 +69,17 @@ echo MODEL_PACKAGE_URIS       = "${MODEL_PACKAGE_URIS}"
 modelname=$(gcloud ai-platform models list | grep -w "$MODEL_NAME")
 echo "$modelname"
 if [ -z "$modelname" ]; then
-   echo "Creating model $MODEL_NAME in region $REGION"
+    echo "Creating model $MODEL_NAME in region $REGION"
 
    gcloud ai-platform models create ${MODEL_NAME} \
     --regions ${MODEL_REGION}
 else
-   echo "Model $MODEL_NAME already exists"
+    echo "Model $MODEL_NAME already exists"
 fi
 
 # create version with custom prediction routine (beta)
 echo "Creating version $MODEL_VERSION from $MODEL_PATH"
-gcloud beta ai-platform versions create ${MODEL_VERSION} \
+gcloud alpha ai-platform versions create ${MODEL_VERSION} \
        --model ${MODEL_NAME} \
        --origin ${MODEL_PATH} \
        --python-version ${MODEL_PYTHON_VERSION} \
